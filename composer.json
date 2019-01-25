@@ -1,0 +1,14 @@
+{
+  "name": "Alec/pets2",
+  "authors":
+  [
+    {
+      "name": "Alec Van Etten",
+      "email": "avan-etten@mail.greenriver.edu"
+    }
+  ],
+  "require":
+  {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}
