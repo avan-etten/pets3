@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 
 // require autoload
 require_once "vendor/autoload.php";
-
+global $f3;
 $f3 = Base::instance();
 
 // set debug level
