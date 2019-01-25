@@ -7,10 +7,11 @@
 <body>
 <form method="post" action="results">
     <label>Select A Color</label>
-    <select name="color">
-        <option value="red" >Red</option>
-        <option value ="white" >White</option>
-        <option value="black" >Black</option>
+    <select name="color" id="color">
+        <option>--Select a color--</option>
+        <repeat group="{{ @colors }}" value="{{ @colorOption }}">
+            <option>{{@colorOption}}</option>
+        </repeat>
     </select>
     <button type="submit">Submit</button>
 </form>

@@ -10,6 +10,7 @@ require_once "vendor/autoload.php";
  */
 
 $f3 = Base::instance();
+$f3->set('colors', array('pink', 'green', 'blue'));
 
 $f3->route('GET /', function() {
     echo "<h1>My Pets</h1>";
@@ -23,8 +24,8 @@ $f3->route('GET /order', function() {
 
 $f3->route('POST /order2', function($f3) {
     $f3->set('SESSION.animal', $f3->get('POST.animal'));
-    $view = new View;
-    echo $view->render('views/form2.html');
+    $template = new Template;
+    echo $template->render('views/form2.html');
 });
 
 $f3->route('POST /results', function($f3) {
