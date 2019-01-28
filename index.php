@@ -21,6 +21,7 @@ $f3->route('GET /', function() {
 });
 
 $f3->route('GET|POST /order', function($f3) {
+    session_start();
 
     $_SESSION = array();
 
@@ -40,13 +41,28 @@ $f3->route('GET|POST /order', function($f3) {
 });
 
 $f3->route('GET|POST /order2', function($f3) {
-    $f3->set('SESSION.animal', $f3->get('POST.animal'));
+    session_start();
+
+    if (isset($_POST['color'])) {
+
+        $color = $_POST['color'];
+        // checks if color is in the array of colors
+        if (in_array($color, $f3->get('colors'))) {
+            $_SESSION['color'] = $color;
+            $f3->reroute('/results');
+        } else {
+            $f3->set("errors['color']", "Please enter a valid color.");
+        }
+    }
+
     $template = new Template;
     echo $template->render('views/form2.html');
 });
 
-$f3->route('POST /results', function($f3) {
-    $f3->set('SESSION.color', $f3->get('POST.color'));
+$f3->route('GET|POST /results', function() {
+    session_start();
+
+    //$f3->set('SESSION.color', $f3->get('POST.color'));
     $template = new Template;
     echo $template->render('views/results.html');
 });
