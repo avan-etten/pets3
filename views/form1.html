@@ -7,11 +7,13 @@
 <body>
 <form method="post" action="#">
     <label>Animal
-    <input type="text" size="15" name="animal">
+    <input type="text" size="15" name="animal" value="{{@POST['animal']}}">
     </label>
     <button type="submit">Next</button>
 
-    <p>{{@errors['animal']}}</p>
+    <check if="{{isset(@errors['animal'])}}">
+        <p>{{@errors['animal']}}</p>
+    </check>
 </form>
 </body>
 </html>
